@@ -2,8 +2,14 @@ import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {AppHeader} from '../components';
 import {HomeScreen} from '../screens/Home';
+import {SignUpCommunityStack} from '../screens/SignupCommunity/navigation';
 
-const Stack = createNativeStackNavigator();
+export type MainStackParamList = {
+  Home: undefined;
+  SignUpCommunity: undefined;
+};
+
+const Stack = createNativeStackNavigator<MainStackParamList>();
 
 export function MainStackNavigator() {
   return (
@@ -16,6 +22,13 @@ export function MainStackNavigator() {
         name="Home"
         component={HomeScreen}
         options={{title: 'Showcase'}}
+      />
+      <Stack.Screen
+        name="SignUpCommunity"
+        component={SignUpCommunityStack}
+        options={{
+          headerShown: false,
+        }}
       />
     </Stack.Navigator>
   );
